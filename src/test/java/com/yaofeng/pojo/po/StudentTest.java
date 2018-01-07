@@ -12,13 +12,14 @@ public class StudentTest {
 	public void test1() {
 		//³õÊ¼»¯IoCÈÝÆ÷
 			ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-		/*	Student bean = (Student) context.getBean("student");
-			Student bean2 = context.getBean("studentname", Student.class);
+			Student bean = (Student) context.getBean("student");
+			System.out.println(bean);
+			/*	Student bean2 = context.getBean("studentname", Student.class);
 			System.out.println(bean);
 			System.out.println(bean2);*/
 			
-			Student factory = (Student) context.getBean("studentfactory");
-			System.out.println(factory);
+			/*Student factory = (Student) context.getBean("studentfactory");
+			System.out.println(factory);*/
 
 	}
 }

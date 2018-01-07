@@ -5,8 +5,10 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 
-	<!-- <bean id="student" name="studentname" class="com.yaofeng.pojo.po.Student" 
-		/> -->
-	<bean id="studentfactory" class="com.yaofeng.pojo.factory.StudentFactory"
-		factory-method="createFactory" />
+	 <bean id="student"  class="com.yaofeng.pojo.po.Student">
+	 <property name="name" value="张三"></property>
+	 <property name="age" value="23"></property>
+	 </bean>
+	<!-- <bean id="studentfactory" class="com.yaofeng.pojo.factory.StudentFactory"
+		factory-method="createFactory" /> -->
 </beans>
