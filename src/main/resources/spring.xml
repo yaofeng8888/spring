@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="phone" class="com.yaofeng.pojo.po.Phone">
+	<!-- <bean id="phone" class="com.yaofeng.pojo.po.Phone">
 	<property name="phoneName" value="诺基亚"></property>
 	<property name="price" value="2999"></property>
 	</bean>
@@ -13,7 +13,15 @@
 	 <property name="name" value="张三"></property>
 	 <property name="age" value="23"></property>
 	 <property name="phone" ref="phone"></property>
-	 </bean>
+	 </bean> -->
 	<!-- <bean id="studentfactory" class="com.yaofeng.pojo.factory.StudentFactory"
 		factory-method="createFactory" /> -->
+		
+		
+		<!-- 有参构造 -->
+		<bean name="phone" class="com.yaofeng.pojo.po.Phone">
+		<constructor-arg name="phoneName" value="华为"></constructor-arg>
+		<constructor-arg name="price" value="1999"></constructor-arg>
+		
+		</bean>
 </beans>
