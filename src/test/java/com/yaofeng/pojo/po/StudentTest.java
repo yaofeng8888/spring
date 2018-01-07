@@ -13,7 +13,7 @@ public class StudentTest {
 	@Test
 	public void test1() {
 		//³õÊ¼»¯IoCÈÝÆ÷
-			ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 //			Student bean = (Student) context.getBean("student");
 //			System.out.println(bean);
 			/*	Student bean2 = context.getBean("studentname", Student.class);

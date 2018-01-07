@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public class Phone {
 @Value("ะกรื")
 	private String phoneName;
-@Value("1500")
+@Value("1555")
 	private Integer price;
 	public String getPhoneName() {
 		return phoneName;
