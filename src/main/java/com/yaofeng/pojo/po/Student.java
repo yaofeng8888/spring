@@ -3,6 +3,15 @@ package com.yaofeng.pojo.po;
 public class Student {
 	private String name;
 	private Integer age;
+	
+	private Phone phone;
+	
+	public Phone getPhone() {
+		return phone;
+	}
+	public void setPhone(Phone phone) {
+		this.phone = phone;
+	}
 	public String getName() {
 		return name;
 	}
@@ -24,8 +33,8 @@ public class Student {
 	}
 	@Override
 	public String toString() {
-		return "Student [name=" + name + ", age=" + age + "]";
+		return "Student [name=" + name + ", age=" + age + ", phone=" + phone + "]";
 	}
-	
+
 	
 }

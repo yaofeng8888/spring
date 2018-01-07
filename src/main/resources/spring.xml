@@ -4,10 +4,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
+	<bean id="phone" class="com.yaofeng.pojo.po.Phone">
+	<property name="phoneName" value="诺基亚"></property>
+	<property name="price" value="2999"></property>
+	</bean>
 
 	 <bean id="student"  class="com.yaofeng.pojo.po.Student">
 	 <property name="name" value="张三"></property>
 	 <property name="age" value="23"></property>
+	 <property name="phone" ref="phone"></property>
 	 </bean>
 	<!-- <bean id="studentfactory" class="com.yaofeng.pojo.factory.StudentFactory"
 		factory-method="createFactory" /> -->
