@@ -1,9 +1,16 @@
 package com.yaofeng.pojo.po;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Student {
+	@Value("ะกร๗")
 	private String name;
+	@Value("15")
 	private Integer age;
-	
+	@Autowired
 	private Phone phone;
 	
 	public Phone getPhone() {

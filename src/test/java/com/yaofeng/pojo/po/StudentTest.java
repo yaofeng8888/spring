@@ -28,10 +28,14 @@ public class StudentTest {
 			/*Teacher teacher = context.getBean("teacher",Teacher.class);
 			System.out.println(teacher);*/
 			
-			MyCollection myCollection = context.getBean("myCollection",MyCollection.class);
-			System.out.println(myCollection.getArrs().length);
+			/*MyCollection myCollection = context.getBean("myCollection",MyCollection.class);
+			System.out.println(myCollection.getArrs().length);*/
 			
+			/*Phone phone = context.getBean("phone",Phone.class);
+			System.out.println(phone);*/
 			
+			Student student = context.getBean("student",Student.class);
+			System.out.println(student);
 
 	}
 }
