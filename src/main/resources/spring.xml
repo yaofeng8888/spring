@@ -1,27 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<!-- <bean id="phone" class="com.yaofeng.pojo.po.Phone">
-	<property name="phoneName" value="诺基亚"></property>
-	<property name="price" value="2999"></property>
-	</bean>
-
-	 <bean id="student"  class="com.yaofeng.pojo.po.Student">
-	 <property name="name" value="张三"></property>
-	 <property name="age" value="23"></property>
-	 <property name="phone" ref="phone"></property>
-	 </bean> -->
-	<!-- <bean id="studentfactory" class="com.yaofeng.pojo.factory.StudentFactory"
+	<!-- <bean id="phone" class="com.yaofeng.pojo.po.Phone"> <property name="phoneName" 
+		value="诺基亚"></property> <property name="price" value="2999"></property> </bean> 
+		<bean id="student" class="com.yaofeng.pojo.po.Student"> <property name="name" 
+		value="张三"></property> <property name="age" value="23"></property> <property 
+		name="phone" ref="phone"></property> </bean> -->
+	<!-- <bean id="studentfactory" class="com.yaofeng.pojo.factory.StudentFactory" 
 		factory-method="createFactory" /> -->
+
+
+	<!-- 有参构造 -->
+	<!-- <bean name="phone" class="com.yaofeng.pojo.po.Phone"> <constructor-arg 
+		name="phoneName" value="华为"></constructor-arg> <constructor-arg name="price" 
+		value="1999"></constructor-arg> </bean> -->
+
+	<!--spel注入 -->
+	<!-- <bean name="teacher" class="com.yaofeng.pojo.po.Teacher" p:phone-ref="phone"> 
+		<property name="teacherName" value="#{phone.phoneName}"></property> <property 
+		name="age" value="20"></property> </bean> -->
+
+	<!-- 复杂的注入 -->
+	<!-- 数组 -->
+	<bean name="myCollection" class="com.yaofeng.collection.MyCollection">
+		<property name="arrs">
+			<list>
+				<value>张三</value>
+				<value>李四</value>
+			</list>
+		</property>
+		<property name="map">
+		<map>
+		<entry key="name" value="iphone x"></entry>
+		<entry key="price" value="9999"></entry>
+		<entry key="color" value="白色"></entry>
+		</map>
 		
-		
-		<!-- 有参构造 -->
-		<bean name="phone" class="com.yaofeng.pojo.po.Phone">
-		<constructor-arg name="phoneName" value="华为"></constructor-arg>
-		<constructor-arg name="price" value="1999"></constructor-arg>
-		
-		</bean>
+		</property>
+	</bean>
+	
+
 </beans>

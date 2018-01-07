@@ -5,6 +5,8 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.yaofeng.collection.MyCollection;
+
 public class StudentTest {
 
 	@SuppressWarnings("resource")
@@ -20,8 +22,16 @@ public class StudentTest {
 			
 			/*Student factory = (Student) context.getBean("studentfactory");
 			System.out.println(factory);*/
-			Phone bean2 = (Phone) context.getBean("phone");
-			System.out.println(bean2);
+//			Phone bean2 = (Phone) context.getBean("phone");
+//			System.out.println(bean2);
+			
+			/*Teacher teacher = context.getBean("teacher",Teacher.class);
+			System.out.println(teacher);*/
+			
+			MyCollection myCollection = context.getBean("myCollection",MyCollection.class);
+			System.out.println(myCollection.getArrs().length);
+			
+			
 
 	}
 }
