@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:p="http://www.springframework.org/schema/p" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation=
-		"http://www.springframework.org/schema/beans
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        ">
 
 	<!-- <bean id="phone" class="com.yaofeng.pojo.po.Phone"> <property name="phoneName" 
 		value="诺基亚"></property> <property name="price" value="2999"></property> </bean> 
@@ -29,24 +32,34 @@ xmlns:context="http://www.springframework.org/schema/context"
 
 	<!-- 复杂的注入 -->
 	<!-- 数组 -->
-	<!-- <bean name="myCollection" class="com.yaofeng.collection.MyCollection">
-		<property name="arrs">
-			<list>
-				<value>张三</value>
-				<value>李四</value>
-			</list>
-		</property>
-		<property name="map">
-		<map>
-		<entry key="name" value="iphone x"></entry>
-		<entry key="price" value="9999"></entry>
-		<entry key="color" value="白色"></entry>
-		</map>
-		
-		</property>
-	</bean> -->
-	
-		<!-- 注解的使用 -->
-		<!-- base-package 这是基础包 com下的所有注解类，包括子包的的注解类都能扫描的到 -->
-		<context:component-scan base-package="com.yaofeng.pojo.po"></context:component-scan>
+	<!-- <bean name="myCollection" class="com.yaofeng.collection.MyCollection"> 
+		<property name="arrs"> <list> <value>张三</value> <value>李四</value> </list> 
+		</property> <property name="map"> <map> <entry key="name" value="iphone x"></entry> 
+		<entry key="price" value="9999"></entry> <entry key="color" value="白色"></entry> 
+		</map> </property> </bean> -->
+
+	<!-- 注解的使用 -->
+	<!-- base-package 这是基础包 com下的所有注解类，包括子包的的注解类都能扫描的到 -->
+	<!-- <context:component-scan base-package="com.yaofeng.pojo.po"></context:component-scan> -->
+
+	<bean id="userServiceImpl" class="com.yaofeng.maven.impl.UserServiceImpl" />
+	<bean id="totalAdvice" class="com.yaofeng.maven.advice.TotalAdvice" />
+
+	<aop:config>
+		<!--切入点 -->
+		<aop:pointcut id="pc"
+			expression="execution(*com.yaofeng.maven.impl.UserServiceImpl.*(..))" />
+		<!--切面 -->
+		<aop:aspect ref="totalAdvice">
+			<aop:before method="before" pointcut-ref="pc" />
+
+		</aop:aspect>
+
+	</aop:config>
+
+
+
+
+
+
 </beans>
