@@ -11,14 +11,21 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd
         ">
+        <!--制定spring读取db.properties配置  -->
+			<context:property-placeholder location="classpath:db.properties"/>
 		<!-- 将连接池放入spring容器 -->
-		<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<!-- 	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<property name="driverClass" value="com.mysql.jdbc.Driver"></property>
 		<property name="jdbcUrl" value="jdbc:mysql:///test1"></property>
 		<property name="user" value="root"></property>
 		<property name="password" value="123"></property>
+		</bean> -->
+		<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${jdbc.driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+		<property name="user" value="${jdbc.user}"></property>
+		<property name="password" value="${jdbc.password}"></property>
 		</bean>
-		
 		<!-- 将jdbcTemplate放入spring容器 -->
 		<bean name="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dataSource"></property>
