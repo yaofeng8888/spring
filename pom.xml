@@ -93,7 +93,7 @@
 
 		<!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
 
-		<!--注解配置的包 aop、 -->
+		<!--注解配置的包 aop、aspects -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
