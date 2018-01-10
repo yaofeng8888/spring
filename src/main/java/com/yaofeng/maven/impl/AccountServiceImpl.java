@@ -13,22 +13,31 @@ public class AccountServiceImpl implements IAccountService {
 	private IAccountDao dao;
 	private TransactionTemplate tt;
 	@Override
-	public void transfer(Integer from, Integer to, Double money) {
-
-		tt.execute(new TransactionCallbackWithoutResult() {
-			@Override
-			protected void doInTransactionWithoutResult(TransactionStatus arg0) {
+	public void transfer(Integer from, Integer to, Double money) {	
 				// TODO Auto-generated method stub
 				//ºı«Æ
 				dao.descMoeny(from, money);
-//				int a = 10/0;
+//				int i = 10/0;
 				//º”«Æ
 				dao.addMoney(to, money);
 			}
-		});
+	
 		
 		
-	}
+		/*public void transfer(Integer from, Integer to, Double money) {
+
+			tt.execute(new TransactionCallbackWithoutResult() {
+				@Override
+				protected void doInTransactionWithoutResult(TransactionStatus arg0) {
+					// TODO Auto-generated method stub
+					//ºı«Æ
+					dao.descMoeny(from, money);
+					int a = 10/0;
+					//º”«Æ
+					dao.addMoney(to, money);
+				}
+			});*/
+			
 	public IAccountDao getDao() {
 		return dao;
 	}

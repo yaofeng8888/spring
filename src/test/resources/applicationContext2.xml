@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:tx="http://www.springframework.org/schema/tx"
 		xmlns:context="http://www.springframework.org/schema/context"
 		xmlns:aop="http://www.springframework.org/schema/aop" 
 		xmlns:p="http://www.springframework.org/schema/p"
@@ -10,6 +11,8 @@
         http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
         ">
         <!--制定spring读取db.properties配置  -->
 			<context:property-placeholder location="classpath:db.properties"/>
@@ -29,7 +32,30 @@
 		<bean name="transactionTemplate" class="org.springframework.transaction.support.TransactionTemplate">
 		<property name="transactionManager" ref="transactionManager"></property>
 		</bean>
+		<!-- 以方法为单位应用什么事物的属性
+		isolation  隔离级别
+		propagation 传播行为
+		read=only 是否只读 -->
 		
+		<!--配置事物通知  -->
+		<tx:advice  id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+		<tx:method name="save*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+		<tx:method name="presist*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+		<tx:method name="update*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+		<tx:method name="modify*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+		<tx:method name="delete*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+		<tx:method name="remove*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+		<tx:method name="get*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+		<tx:method name="find*" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="true"/>
+		<tx:method name="transfer" isolation="REPEATABLE_READ" propagation="REQUIRED" read-only="false"/>
+		</tx:attributes>
+		</tx:advice>
+		<!--配置植入  -->
+		<aop:config>
+		<aop:pointcut expression="execution(* com.yaofeng.maven.impl.AccountServiceImpl.*(..))" id="txPc"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPc"/>
+		</aop:config>
 		
 		
 		<!-- 将AccountDaoImpl放入spring -->
